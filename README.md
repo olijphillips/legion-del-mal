@@ -3,6 +3,12 @@
 > _"El mundo no se conquista con fuerza bruta, se conquista con un buen plan y control de versiones."_
 > — Lex Luthor, fundador
 
+![Workflow](https://img.shields.io/github/actions/workflow/status/olijphillips/legion-del-mal/ci.yml)
+![Release](https://img.shields.io/github/v/release/olijphillips/legion-del-mal)
+![Issues](https://img.shields.io/github/issues/olijphillips/legion-del-mal)
+![Último commit](https://img.shields.io/github/last-commit/olijphillips/legion-del-mal)
+![Licencia](https://img.shields.io/github/license/olijphillips/legion-del-mal)
+
 ## ¿Quiénes somos?
 
 Somos la alianza definitiva de supervillanos. Mientras los héroes se dividen entre Metrópolis, Gotham y Nueva York, nosotros hemos hecho lo que ellos jamás lograron: unirnos. DC, Marvel, no importa el universo — aquí solo importa el objetivo.
