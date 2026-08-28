@@ -9,7 +9,7 @@
 ![Último commit](https://img.shields.io/github/last-commit/olijphillips/legion-del-mal)
 ![Licencia](https://img.shields.io/github/license/olijphillips/legion-del-mal)
 
-## ¿Quiénes somos? !! Remoto
+## ¿Quiénes somos? !! Remoto y Local
 
 Somos la alianza definitiva de supervillanos. Mientras los héroes se dividen entre Metrópolis, Gotham y Nueva York, nosotros hemos hecho lo que ellos jamás lograron: unirnos. DC, Marvel, no importa el universo — aquí solo importa el objetivo.
 
