@@ -1,5 +1,7 @@
 # 🦹‍♂️ La Legión del Mal - Desde Local
 
+## Subtítulo: La unión de los supervillanos más temidos
+
 > _"El mundo no se conquista con fuerza bruta, se conquista con un buen plan y control de versiones."_
 > — Lex Luthor, fundador
 
