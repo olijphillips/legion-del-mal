@@ -1,3 +1,6 @@
+
+# Notas
+
 > [!NOTE]
 > Información útil para el lector.
 
