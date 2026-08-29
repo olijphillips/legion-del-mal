@@ -2,6 +2,8 @@
 
 ## Subtítulo: La unión de los supervillanos más temidos
 
+### Subtítulo 2: ¡El mal nunca descansa, y nosotros tampoco!
+
 > _"El mundo no se conquista con fuerza bruta, se conquista con un buen plan y control de versiones."_
 > — Lex Luthor, fundador
 
