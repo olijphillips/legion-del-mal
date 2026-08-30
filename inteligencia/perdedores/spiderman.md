@@ -11,3 +11,18 @@ Spiderman es un superhéroe ficticio creado por el escritor Stan Lee y el dibuja
 
 - Spider-Man (2002)
 - Spider-Man 2 (2004)
+
+## Poderes
+
+- Fuerza sobrehumana
+- Agilidad y reflejos mejorados
+
+## Debilidades
+
+- Vulnerabilidad a ataques físicos y armas convencionales
+- Dependencia de su sentido arácnido para detectar peligros
+
+## Conocidos
+
+- Mary Jane Watson
+- Gwen Stacy
