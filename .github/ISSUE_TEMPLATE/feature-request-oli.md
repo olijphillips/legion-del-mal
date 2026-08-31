@@ -2,8 +2,8 @@
 name: Feature request OLI
 about: Suggest an idea for this project
 title: ''
-labels: ''
-assignees: ''
+labels: Mejora de Software
+assignees: olijphillips
 
 ---
 
