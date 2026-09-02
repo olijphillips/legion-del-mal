@@ -1,14 +1,14 @@
 name: Informe Diario de Dominación
 on:
-  schedule:
-    # Los campos del cron son, en orden:
-    #  ┌───────────── minuto (0 - 59)
-    #  │ ┌───────────── hora (0 - 23)
-    #  │ │ ┌───────────── día del mes (1 - 31)
-    #  │ │ │ ┌───────────── mes (1 - 12)
-    #  │ │ │ │ ┌───────────── día de la semana (0 - 6; 0 = domingo)
-    #  │ │ │ │ │
-    - cron: "0 8 * * *" # Cada día a las 8:00 UTC
+  #   schedule:
+  #     # Los campos del cron son, en orden:
+  #     #  ┌───────────── minuto (0 - 59)
+  #     #  │ ┌───────────── hora (0 - 23)
+  #     #  │ │ ┌───────────── día del mes (1 - 31)
+  #     #  │ │ │ ┌───────────── mes (1 - 12)
+  #     #  │ │ │ │ ┌───────────── día de la semana (0 - 6; 0 = domingo)
+  #     #  │ │ │ │ │
+  #     - cron: "0 8 * * *" # Cada día a las 8:00 UTC
   workflow_dispatch:
 
 permissions:
