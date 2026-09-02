@@ -1,4 +1,4 @@
-name: Reclutamiento de Agente
+name: 📝Reclutamiento de Agente
 
 on:
   workflow_dispatch:
