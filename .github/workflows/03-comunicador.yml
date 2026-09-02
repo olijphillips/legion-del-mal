@@ -12,6 +12,7 @@ on:
           - Joker
           - Thanos
           - Green Goblin
+
       mensaje:
         description: "Contenido del mensaje"
         required: true
