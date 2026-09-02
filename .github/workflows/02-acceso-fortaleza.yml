@@ -23,17 +23,22 @@ jobs:
         run: |
           echo "Explorando la boveda de la Fortaleza Prohibida"
           ls -la
-          echo ""
           echo "✅ Funciona"
           echo "🔐 La boveda ha sido explorada"
+          echo ""
           echo "🗺️Planes:"
+          echo ""
           ls planes/
+          echo ""
           echo "🃏Villanos:"
           ls miembros/
+          echo ""
           echo "🕵️Inteligencia:"
           ls inteligencia/
+          echo ""
           echo "📜Documentos:"
           ls docs/
+          echo ""
           # echo "🤫Archivos secretos:"
           # ls secretos/ 2>/dev/null || echo "⚠️ La carpeta secretos/ no existe"
           echo "🔚Fin de la exploración de la boveda🔚"
