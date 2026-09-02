@@ -17,6 +17,16 @@ on:
         required: true
         default: "La misión fué un éxito"
 
+      cow_say:
+        description: "El estilo de cowsay"
+        required: true
+        type: choice
+        options:
+          - stegosaurus
+          - tux
+          - dragon
+          - elefant
+
       prioridad:
         description: "Nivel de Prioridad"
         required: true
@@ -45,7 +55,7 @@ jobs:
           echo "Fecha: $(date -u +"%Y-%m-%d %H:%M:%S UTC")"
           echo "------Mensaje------"
           echo ""
-          cowsay -f eyes "${{ inputs.mensaje }}"  
+          cowsay -f "${{ inputs.cow_say }}" "${{ inputs.mensaje }}"  
           echo ""
           echo "---------------------------------------"
           echo ""
