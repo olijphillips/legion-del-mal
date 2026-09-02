@@ -1,6 +1,7 @@
 name: 👍Acceso a la Fortaleza Prohibida
 
-on: push
+on:
+  workflow_dispatch:
 
 jobs:
   acceso-a-la-base:
@@ -8,9 +9,31 @@ jobs:
     steps:
       - name: El agente llega a la Fortaleza
         run: |
-          echo "Agente ${{github.actor}} ha llegado a la Fortaleza Prohibida"
+          echo "Agente ${{ github.actor }} ha llegado a la Fortaleza Prohibida"
           echo ""
           echo "Buscar archivos de la Legión🗂️"
           ls -la
           echo ""
           echo "☢️pero que pasó aquí? No hay nada"
+
+      - name: "🃏Guason desbloquea la boveda"
+        uses: actions/checkout@v4
+
+      - name: "🔑Ahora sí, vamos a Explorar la boveda"
+        run: |
+          echo "Explorando la boveda de la Fortaleza Prohibida"
+          ls -la
+          echo ""
+          echo "✅ Funciona"
+          echo "🔐 La boveda ha sido explorada"
+          echo "🗺️Planes:"
+          ls planes/
+          echo "🃏Villanos:"
+          ls villanos/
+          echo "🕵️Inteligencia:"
+          ls inteligencia/
+          echo "📜Documentos:"
+          ls documentos/
+          echo "🤫Archivos secretos:"
+          ls secretos/
+          echo "🔚Fin de la exploración de la boveda🔚"
