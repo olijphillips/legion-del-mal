@@ -1,0 +1,19 @@
+name: Control de Calidad
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  revision-de-calidad:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Joker accede al repo
+        uses: actions/checkout@v2
+
+      - name: El consejo revisa los cambios antes de ejecutar el control de calidad
+        run: |
+          chmod +x ./scripts/control_calidad.sh  
+          ./scripts/control_calidad.sh
