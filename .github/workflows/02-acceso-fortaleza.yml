@@ -33,7 +33,7 @@ jobs:
           echo "🕵️Inteligencia:"
           ls inteligencia/
           echo "📜Documentos:"
-          ls documentos/
-          echo "🤫Archivos secretos:"
-          ls secretos/
+          ls docs/
+          # echo "🤫Archivos secretos:"
+          # ls secretos/ 2>/dev/null || echo "⚠️ La carpeta secretos/ no existe"
           echo "🔚Fin de la exploración de la boveda🔚"
