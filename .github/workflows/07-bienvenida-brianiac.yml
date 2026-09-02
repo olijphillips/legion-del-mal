@@ -1,0 +1,54 @@
+# ╔══════════════════════════════════════════════════════╗
+# ║   ACKNOWLEDGE DE ISSUES - BRAINIAC ESTÁ REVISANDO    ║
+# ║                                                      ║
+# ║  Cuando alguien abre un issue, Brainiac (el          ║
+# ║  coleccionista de conocimiento) responde al instante ║
+# ║  confirmando que su reporte está siendo analizado.   ║
+# ╚══════════════════════════════════════════════════════╝
+
+name: 🧠 Brainiac revisa el issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  acknowledge:
+    name: 🛰️ Responder al reporte
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write # Necesario para comentar en el issue
+
+    steps:
+      - name: 🧠 Brainiac analiza la información
+        run: |
+          echo "🛰️ Escaneando issue #${{ github.event.issue.number }}..."
+          echo "📥 Título: ${{ github.event.issue.title }}"
+          echo "👤 Reportado por: ${{ github.event.issue.user.login }}"
+
+      - name: 💬 Publicar acknowledge
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const numero = context.issue.number;
+            const autor = context.payload.issue.user.login;
+
+            const mensaje = [
+              `Hola @${autor} 🦸‍♂️`,
+              ``,
+              `🧠 **Brainiac ha detectado tu reporte** y lo está analizando con sus 12 niveles de conciencia 🔬`,
+              ``,
+              `✅ **Estado:** ${'🔎'} En revisión por la Legión del Mal`,
+              `📡 **Prioridad:** Escaneada por el dron #${numero}`,
+              ``,
+              `> 🛸 _"Todo conocimiento será asimilado. Tu issue no es la excepción."_ 🧠`,
+              ``,
+              `⏳ Te avisaremos cuando los villanos tengan una respuesta. ¡Gracias por contribuir a la colección! 📚`,
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: numero,
+              body: mensaje,
+            });

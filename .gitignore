@@ -10,3 +10,6 @@ logs/server*.log
 !logs/server.log
 
 *.env
+
+# entorno virtual de Python (regenerable, no se sube)
+.venv/
