@@ -1,0 +1,128 @@
+name: 🏷️ Tag → Release de la Legión
+
+# Se dispara cuando se publica un nuevo tag (ej: v1.0.0, v2.1.3-beta).
+# Si quieres que se dispare con CUALQUIER tag, cambia el patrón por: "**"
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write # Permite que el GITHUB_TOKEN cree el Release
+
+env:
+  TAG: ${{ github.ref_name }}
+
+jobs:
+  crear-release:
+    name: 📦 Publicar Release con changelog
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🥷 Checkout (historial completo + todos los tags)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Historial completo: necesario para el changelog
+          fetch-tags: true # Trae todos los tags para poder comparar versiones
+
+      - name: 🧠 Brainiac identifica el tag anterior
+        id: tags
+        run: |
+          # Buscar el tag anterior al actual (ordenados por fecha de creación)
+          PREV_TAG=$(git tag --sort=-creatordate | grep -vxF "$TAG" | head -n 1 || true)
+
+          echo "🧠 Tag actual:   $TAG"
+          echo "🧠 Tag anterior: ${PREV_TAG:-(ninguno — este es el primer release)}"
+
+          {
+            echo "prev_tag=$PREV_TAG"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: 📝 Generar el informe del release (changelog + logs)
+        env:
+          PREV_TAG: ${{ steps.tags.outputs.prev_tag }}
+        run: |
+          NOTES="release_notes.md"
+
+          if [ -n "$PREV_TAG" ]; then
+            RANGE="$PREV_TAG..$TAG"
+            BASE_RANGE="$RANGE"
+            SUBTITULO="Cambios desde \`$PREV_TAG\` hasta \`$TAG\`"
+          else
+            RANGE="$TAG"
+            # Sin tag anterior: comparamos contra el árbol vacío (toda la historia)
+            BASE_RANGE="$(git hash-object -t tree /dev/null)..$TAG"
+            SUBTITULO="Primer release de la Legión — historia completa hasta \`$TAG\`"
+          fi
+
+          # Agrupa los commits por tipo (conventional commits: feat:, fix:, docs:...)
+          emitir_categoria() {
+            local CONTENIDO
+            CONTENIDO=$(git log --format='%h %s' "$RANGE" | grep -iE "^[0-9a-f]+ ($1)[(:]" | sed 's/^/- /')
+            if [ -n "$CONTENIDO" ]; then
+              echo "### $2"
+              echo ""
+              echo "$CONTENIDO"
+              echo ""
+            fi
+          }
+
+          {
+            echo "# 🦹‍♂️ Release $TAG — Informe de la Legión del Mal"
+            echo ""
+            echo "> 📍 $SUBTITULO"
+            echo "> 📅 Fecha del release: $(git log -1 --format='%ad' --date=format:'%d/%m/%Y %H:%M UTC' "$TAG")"
+            echo ""
+            echo "## 📊 Resumen de la operación"
+            echo ""
+            echo "| Métrica | Valor |"
+            echo "|---------|-------|"
+            echo "| 🧾 Commits incluidos | $(git rev-list --count "$RANGE") |"
+            echo "| 🗂️ Archivos modificados | $(git diff --name-only "$BASE_RANGE" | wc -l) |"
+            echo "| ➕ Líneas añadidas | $(git diff --shortstat "$BASE_RANGE" | grep -oE '[0-9]+ insertion' | grep -oE '[0-9]+' || echo 0) |"
+            echo "| ➖ Líneas eliminadas | $(git diff --shortstat "$BASE_RANGE" | grep -oE '[0-9]+ deletion' | grep -oE '[0-9]+' || echo 0) |"
+            echo "| 👥 Villanos involucrados | $(git log --format='%an' "$RANGE" | sort -u | wc -l) |"
+            echo ""
+            echo "## 🔄 Lo que cambió en esta versión"
+            echo ""
+            emitir_categoria 'feat|feature' '✨ Nuevas características'
+            emitir_categoria 'fix|bugfix'   '🐛 Correcciones'
+            emitir_categoria 'docs'         '📝 Documentación'
+            emitir_categoria 'refactor'     '♻️ Refactorización'
+            emitir_categoria 'test'         '🧪 Pruebas'
+            OTROS=$(git log --format='%h %s' "$RANGE" | grep -viE '^[0-9a-f]+ (feat|feature|fix|bugfix|docs|refactor|test)[(:]' | sed 's/^/- /')
+            if [ -n "$OTROS" ]; then
+              echo "### ⚙️ Otros cambios"
+              echo ""
+              echo "$OTROS"
+              echo ""
+            fi
+            echo "## 🧾 Log completo de commits"
+            echo ""
+            git log --format='- `%h` %s — *%an*' "$RANGE"
+            echo ""
+            echo "## 🗂️ Archivos modificados"
+            echo ""
+            git diff --name-status "$BASE_RANGE" | sed 's/^/- /'
+            echo ""
+            echo "## 👥 Villanos que participaron"
+            echo ""
+            git log --format='%an' "$RANGE" | sort -u | sed 's/^/- /'
+            echo ""
+            echo "---"
+            echo ""
+            echo "_Informe generado automáticamente por Brainiac v12.0._"
+            echo '_"Los datos no mienten. Los seres orgánicos sí."_'
+          } > "$NOTES"
+
+          echo "════════ VISTA PREVIA DEL INFORME ════════"
+          cat "$NOTES"
+
+      - name: 🚀 Publicar el Release en GitHub
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: 🦹 Legión del Mal ${{ github.ref_name }}
+          body_path: release_notes.md
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-') }}

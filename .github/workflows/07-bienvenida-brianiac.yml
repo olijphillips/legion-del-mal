@@ -52,3 +52,32 @@ jobs:
               issue_number: numero,
               body: mensaje,
             });
+
+      # ── PASO DESACTIVADO: notificación por correo ────────────────────────
+      # Requiere los secrets SMTP_SERVER, SMTP_PORT, SMTP_USERNAME y
+      # SMTP_PASSWORD. Descomentar cuando se configuren.
+      #
+      # - name: 📧 Notificar a la Fortaleza por correo
+      #   uses: dawidd6/action-send-mail@v4
+      #   with:
+      #     # Credenciales SMTP guardadas como secrets del repositorio
+      #     server_address: ${{ secrets.SMTP_SERVER }}
+      #     server_port: ${{ secrets.SMTP_PORT }}
+      #     username: ${{ secrets.SMTP_USERNAME }}
+      #     password: ${{ secrets.SMTP_PASSWORD }}
+      #     subject: "🧠 Brainiac está revisando el issue #${{ github.event.issue.number }}"
+      #     to: oljphillips@hotmail.com
+      #     from: "🧠 Brainiac (Legión del Mal) <${{ secrets.SMTP_USERNAME }}>"
+      #     convert_markdown: true
+      #     body: |
+      #       🦸‍♂️ **Nuevo reporte detectado**
+      #
+      #       🧠 **Brainiac ha interceptado un nuevo issue** y lo está analizando con sus 12 niveles de conciencia 🔬
+      #
+      #       - 📥 **Título:** ${{ github.event.issue.title }}
+      #       - 👤 **Reportado por:** ${{ github.event.issue.user.login }}
+      #       - 🔗 **Enlace:** ${{ github.event.issue.html_url }}
+      #
+      #       ✅ **Estado:** 🔎 En revisión por la Legión del Mal
+      #
+      #       > 🛸 _"Todo conocimiento será asimilado. Tu issue no es la excepción."_ 🧠
