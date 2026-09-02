@@ -30,4 +30,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Imprimir inputs
+        run: |
+          echo "Iniciando la transmisión del mensaje..."
+          echo "Villano: ${{ inputs.villano }}"
+          echo "Mensaje: ${{ inputs.mensaje }}"
+          echo "Prioridad: ${{ inputs.prioridad }}"
