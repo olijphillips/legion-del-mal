@@ -12,6 +12,19 @@ on:
           - Joker
           - Thanos
           - Green Goblin
+      mensaje:
+        description: "Contenido del mensaje"
+        required: true
+        default: "La misión fué un éxito"
+
+      prioridad:
+        description: "Nivel de Prioridad"
+        required: true
+        type: choice
+        options:
+          - 🟢 Normal
+          - 🟡 Alta
+          - 🔴 Crítica
 jobs:
   transmitir-mensaje:
     runs-on: ubuntu-latest
