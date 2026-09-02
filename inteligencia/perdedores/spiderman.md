@@ -26,3 +26,5 @@ Spiderman es un superhéroe ficticio creado por el escritor Stan Lee y el dibuja
 
 - Mary Jane Watson
 - Gwen Stacy
+
+## Estrategia recomendada

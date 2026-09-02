@@ -8,3 +8,5 @@ El objetivo de este plan es lanzar un satélite que genere un campo de congelaci
 2. **Lanzamiento del satélite:** Transportar Glaciar-1 a la órbita terrestre desde la Base Lunar.
 3. **Activación del campo de congelación:** Una vez en posición sobre Metrópolis, activar el campo de congelación para paralizar la ciudad.
 4. **Toma de control:** Con la ciudad paralizada, la Legión del Mal puede tomar el control sin resistencia.
+
+## Plan de escape

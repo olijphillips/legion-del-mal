@@ -7,3 +7,5 @@ Estos son los planes de control mental que hemos desarrollado para manipular a l
 1. **Identificación del objetivo:** Determinar qué héroe o villano es el objetivo del control mental y recopilar información sobre sus hábitos, debilidades y fortalezas.
 2. **Desarrollo del dispositivo de control:** Utilizar tecnología avanzada para crear un dispositivo capaz de emitir ondas cerebrales específicas que puedan influir en la mente del objetivo.
 3. **Pruebas de campo:** Realizar pruebas controladas para asegurarse de que el dispositivo funcione correctamente y no cause efectos secundarios no deseados.
+
+## Plan de escape
